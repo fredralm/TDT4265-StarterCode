@@ -26,6 +26,8 @@ To get a list of already installed packages, use:
 pip list
 ```
 
+Pytorch is already installed on the computers and it should work out of the box with the GPU. Just launch python with "python3" in the terminal.
+
 
 ## Working remote
 You can access the computer from your home computer/laptop by using ssh. To connect, you can connect to the following adress:
@@ -37,5 +39,16 @@ For example,
 ```
 ssh haakohu@clab21.idi.ntnu.no
 ```
+You need to be on the school network to be able to connect.
+If you want to connect outside school network, you have to use a VPN. \href{https://innsida.ntnu.no/wiki/-/wiki/English/Install+vpn}{(Innsida VPN guide).}
+
 
 **NOTE**: It is not allowed to ssh onto the computers in school time! See above for rules
+
+## Selecting CUDA version
+You can select which cuda version to use (version 9 or 10), by issuing the following cmd;
+```
+cuda-ver 9.0
+```
+To run tensorflow or keras on the tulipan computers you might need to use cuda 9.0.
+
