@@ -73,6 +73,7 @@ class BaseTrainer:
         )
 
         global_step = 0
+        no_improvement_counter = 0
         for epoch in range(num_epochs):
             train_loader = utils.batch_loader(
                 self.X_train, self.Y_train, self.batch_size, shuffle=self.shuffle_dataset)
@@ -90,5 +91,15 @@ class BaseTrainer:
 
                     # TODO (Task 2d): Implement early stopping here.
                     # You can access the validation loss in val_history["loss"]
+
+                    # Check if validation loss increased compared to the last validation loss tracking
+                    #if global_step > 0:
+                        #if val_history["loss"][global_step] >= val_history["loss"][global_step - num_steps_per_val]:
+                            #no_improvement_counter += 1
                 global_step += 1
+
+            # Check if validation loss increased 10 times, if so stop training
+            #if no_improvement_counter == 10:
+                #print("Early stopping after", epoch, "epochs.")
+                #break
         return train_history, val_history

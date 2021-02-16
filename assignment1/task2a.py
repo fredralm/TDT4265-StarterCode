@@ -13,7 +13,11 @@ def pre_process_images(X: np.ndarray):
     assert X.shape[1] == 784,\
         f"X.shape[1]: {X.shape[1]}, should be 784"
     # TODO implement this function (Task 2a)
-    return X
+    R = np.ones((X.shape[0], X.shape[1]+1), np.float64)
+    for i in range(X.shape[0]):
+        for j in range(X.shape[1]):
+            R[i][j] = X[i][j]/128 - 1
+    return R
 
 
 def cross_entropy_loss(targets: np.ndarray, outputs: np.ndarray) -> float:
@@ -25,16 +29,19 @@ def cross_entropy_loss(targets: np.ndarray, outputs: np.ndarray) -> float:
         Cross entropy error (float)
     """
     # TODO implement this function (Task 2a)
+    C = np.sum(-(targets*np.log(outputs) + (1 - targets)*(np.log(1 - outputs))))
+    C = C/targets.shape[0]
+
     assert targets.shape == outputs.shape,\
         f"Targets shape: {targets.shape}, outputs: {outputs.shape}"
-    return 0
+    return C
 
 
 class BinaryModel:
 
     def __init__(self):
         # Define number of input nodes
-        self.I = None
+        self.I = 785
         self.w = np.zeros((self.I, 1))
         self.grad = None
 
@@ -46,7 +53,10 @@ class BinaryModel:
             y: output of model with shape [batch size, 1]
         """
         # TODO implement this function (Task 2a)
-        return None
+        Y = np.zeros((X.shape[0], 1))
+        for i in range(Y.shape[0]):
+            Y[i][0] = 1/(1+np.exp(-self.w.T.dot(X[i])))
+        return Y
 
     def backward(self, X: np.ndarray, outputs: np.ndarray, targets: np.ndarray) -> None:
         """
@@ -57,11 +67,17 @@ class BinaryModel:
             targets: labels/targets of each image of shape: [batch size, 1]
         """
         # TODO implement this function (Task 2a)
+        grad = np.zeros(self.w.shape)
+        for i in range(X.shape[0]):
+            grad[:,0] += -(targets[i][0] - outputs[i][0])*X[i]
+        grad = grad/X.shape[0]
+        self.grad = grad
+
         assert targets.shape == outputs.shape,\
             f"Output shape: {outputs.shape}, targets: {targets.shape}"
-        self.grad = np.zeros_like(self.w)
         assert self.grad.shape == self.w.shape,\
             f"Grad shape: {self.grad.shape}, w: {self.w.shape}"
+
 
     def zero_grad(self) -> None:
         self.grad = None
@@ -69,7 +85,7 @@ class BinaryModel:
 
 def gradient_approximation_test(model: BinaryModel, X: np.ndarray, Y: np.ndarray):
     """
-        Numerical approximation for gradients. Should not be edited. 
+        Numerical approximation for gradients. Should not be edited.
         Details about this test is given in the appendix in the assignment.
     """
     w_orig = np.random.normal(loc=0, scale=1/model.w.shape[0]**2, size=model.w.shape)
