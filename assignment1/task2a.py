@@ -16,7 +16,7 @@ def pre_process_images(X: np.ndarray):
     R = np.ones((X.shape[0], X.shape[1]+1), np.float64)
     for i in range(X.shape[0]):
         for j in range(X.shape[1]):
-            R[i][j] = X[i][j]/128 - 1
+            R[i][j] = X[i][j]/127.5 - 1
     return R
 
 

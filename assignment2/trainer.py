@@ -74,6 +74,8 @@ class BaseTrainer:
 
         global_step = 0
         for epoch in range(num_epochs):
+            print(epoch)
+            no_improvement_counter = 0
             train_loader = utils.batch_loader(
                 self.X_train, self.Y_train, self.batch_size, shuffle=self.shuffle_dataset)
             for X_batch, Y_batch in iter(train_loader):
@@ -88,5 +90,13 @@ class BaseTrainer:
                     val_history["loss"][global_step] = val_loss
                     val_history["accuracy"][global_step] = accuracy_val
                     # TODO: Implement early stopping (copy from last assignment)
+                    # Check if validation loss increased compared to the last validation loss tracking
+                    if global_step > 0:
+                        if val_history["loss"][global_step] >= val_history["loss"][global_step - num_steps_per_val]:
+                            no_improvement_counter += 1
                 global_step += 1
+
+            if no_improvement_counter == 50:
+                print("Early stopping after", epoch, "epochs.")
+                break
         return train_history, val_history
