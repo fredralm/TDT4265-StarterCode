@@ -1,4 +1,3 @@
-
 import torch
 import typing
 import time
@@ -22,7 +21,9 @@ def compute_loss_and_accuracy(
         [average_loss, accuracy]: both scalar.
     """
     average_loss = 0
-    accuracy = 0
+    num_images_forwarded = 0
+    num_batches = 0
+    correct = 0
     # TODO: Implement this function (Task  2a)
     with torch.no_grad():
         for (X_batch, Y_batch) in dataloader:
@@ -31,9 +32,15 @@ def compute_loss_and_accuracy(
             Y_batch = utils.to_cuda(Y_batch)
             # Forward pass the images through our model
             output_probs = model(X_batch)
-
+            num_images_forwarded += X_batch.shape[0]
+            num_batches += 1
+            average_loss += loss_criterion(output_probs, Y_batch)
+            for i, probs in enumerate(output_probs):
+                if Y_batch[i] == torch.argmax(probs):
+                    correct += 1
             # Compute Loss and Accuracy
-
+    average_loss = average_loss/num_batches
+    accuracy = correct/num_images_forwarded
     return average_loss, accuracy
 
 
