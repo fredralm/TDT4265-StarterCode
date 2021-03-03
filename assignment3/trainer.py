@@ -69,7 +69,7 @@ class Trainer:
         self.model = utils.to_cuda(self.model)
         print(self.model)
 
-        sgd = false
+        sgd = False
         if sgd:
             # Define our optimizer. SGD = Stochastich Gradient Descent
             self.optimizer = torch.optim.SGD(self.model.parameters(),
