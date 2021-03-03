@@ -69,11 +69,12 @@ class Trainer:
         self.model = utils.to_cuda(self.model)
         print(self.model)
 
-        sgd = False
+        sgd = True
         if sgd:
             # Define our optimizer. SGD = Stochastich Gradient Descent
             self.optimizer = torch.optim.SGD(self.model.parameters(),
                                             self.learning_rate)
+            print("Using SGD optimizer")
         else:
             # Define optimizer for task 3. Adam = Adaptive Moment Estimation
             self.optimizer = torch.optim.Adam(self.model.parameters(),
