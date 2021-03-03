@@ -128,7 +128,7 @@ if __name__ == "__main__":
         model,
         dataloaders
     )
-    train = False
+    train = True
     if train:
         trainer.train()
     else:
