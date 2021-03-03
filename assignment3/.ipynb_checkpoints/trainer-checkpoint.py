@@ -34,7 +34,7 @@ def compute_loss_and_accuracy(
             output_probs = model(X_batch)
             num_images_forwarded += X_batch.shape[0]
             num_batches += 1
-            average_loss += loss_criterion(output_probs, Y_batch)
+            average_loss += loss_criterion(output_probs, Y_batch).detach().cpu().item()
             for i, probs in enumerate(output_probs):
                 if Y_batch[i] == torch.argmax(probs):
                     correct += 1
@@ -70,11 +70,11 @@ class Trainer:
         print(self.model)
 
         # Define our optimizer. SGD = Stochastich Gradient Descent
-        #self.optimizer = torch.optim.SGD(self.model.parameters(),
-        #                                self.learning_rate)
+        self.optimizer = torch.optim.SGD(self.model.parameters(),
+                                        self.learning_rate)
         # Define optimizer for task 3. Adam = Adaptive Moment Estimation
-        self.optimizer = torch.optim.Adam(self.model.parameters(), 
-                                         self.learning_rate)
+        #self.optimizer = torch.optim.Adam(self.model.parameters(),
+        #                                 self.learning_rate)
 
         # Load our dataset
         self.dataloader_train, self.dataloader_val, self.dataloader_test = dataloaders
