@@ -52,7 +52,8 @@ class Trainer:
                  early_stop_count: int,
                  epochs: int,
                  model: torch.nn.Module,
-                 dataloaders: typing.List[torch.utils.data.DataLoader]):
+                 dataloaders: typing.List[torch.utils.data.DataLoader],
+                 optimizer = "SGD"):
         """
             Initialize our trainer class.
         """
@@ -69,9 +70,18 @@ class Trainer:
         self.model = utils.to_cuda(self.model)
         print(self.model)
 
-        sgd = True
-        if sgd:
+        
+        if optimizer == "SGD":
             # Define our optimizer. SGD = Stochastich Gradient Descent
+            self.optimizer = torch.optim.SGD(self.model.parameters(),
+                                            self.learning_rate)
+        elif optimizer == "Adam":
+            # Define our optimizer. Adam = Adaptive Moment Estimation
+            self.optimizer = torch.optim.Adam(self.model.parameters(),
+                                            self.learning_rate)
+            print("Using Adam optimizer")
+        else:
+            # Default to optimizer SGD = Stochastich Gradient Descent
             self.optimizer = torch.optim.SGD(self.model.parameters(),
                                             self.learning_rate)
 
