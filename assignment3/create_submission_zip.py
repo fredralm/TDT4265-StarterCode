@@ -29,7 +29,6 @@ files_to_include = {
     "task4b": [".py"],
     "trainer": [".py"],
     "utils": [".py"],
-    "mnist": [".py"],
     "dataloaders": [".py"],
     "dataloaders_task4": [".py"]
 }
