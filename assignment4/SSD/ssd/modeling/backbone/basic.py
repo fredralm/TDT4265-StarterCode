@@ -34,6 +34,7 @@ class BasicModel(torch.nn.Module):
                 stride=2
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 32),
             nn.Conv2d(
                 in_channels= 32,
                 out_channels= 64,
@@ -46,6 +47,7 @@ class BasicModel(torch.nn.Module):
                 stride=2
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 64),
             nn.Conv2d(
                 in_channels= 64,
                 out_channels= 64,
@@ -54,6 +56,7 @@ class BasicModel(torch.nn.Module):
                 padding=1
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 64),
             nn.Conv2d(
                 in_channels= 64,
                 out_channels= self.output_channels[0],
@@ -65,6 +68,7 @@ class BasicModel(torch.nn.Module):
         # Output resolution 38x38
         self.feature_extractor1 = nn.Sequential(
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = self.output_channels[0]),
             nn.Conv2d(
                 in_channels= self.output_channels[0],
                 out_channels= 128,
@@ -73,6 +77,7 @@ class BasicModel(torch.nn.Module):
                 padding=1
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 128),
             nn.Conv2d(
                 in_channels= 128,
                 out_channels= self.output_channels[1],
@@ -84,6 +89,7 @@ class BasicModel(torch.nn.Module):
         # Output resolution 19x19
         self.feature_extractor2 = nn.Sequential(
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = self.output_channels[1]),
             nn.Conv2d(
                 in_channels= self.output_channels[1],
                 out_channels= 256,
@@ -92,6 +98,7 @@ class BasicModel(torch.nn.Module):
                 padding=1
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 256),
             nn.Conv2d(
                 in_channels= 256,
                 out_channels= self.output_channels[2],
@@ -103,6 +110,7 @@ class BasicModel(torch.nn.Module):
         # Output resolution 9x9
         self.feature_extractor3 = nn.Sequential(
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = self.output_channels[2]),
             nn.Conv2d(
                 in_channels= self.output_channels[2],
                 out_channels= 128,
@@ -111,6 +119,7 @@ class BasicModel(torch.nn.Module):
                 padding=1
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 128),
             nn.Conv2d(
                 in_channels= 128,
                 out_channels= self.output_channels[3],
@@ -122,6 +131,7 @@ class BasicModel(torch.nn.Module):
         # Output resolution 5x5
         self.feature_extractor4 = nn.Sequential(
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = self.output_channels[3]),
             nn.Conv2d(
                 in_channels= self.output_channels[3],
                 out_channels= 128,
@@ -130,6 +140,7 @@ class BasicModel(torch.nn.Module):
                 padding=1
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 128),
             nn.Conv2d(
                 in_channels= 128,
                 out_channels= self.output_channels[4],
@@ -141,6 +152,7 @@ class BasicModel(torch.nn.Module):
         # Output resolution 3x3
         self.feature_extractor5 = nn.Sequential(
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = self.output_channels[4]),
             nn.Conv2d(
                 in_channels= self.output_channels[4],
                 out_channels= 128,
@@ -149,6 +161,7 @@ class BasicModel(torch.nn.Module):
                 padding=1
             ),
             nn.ReLU(),
+            nn.BatchNorm2d(num_features = 128),
             nn.Conv2d(
                 in_channels= 128,
                 out_channels= self.output_channels[5],
