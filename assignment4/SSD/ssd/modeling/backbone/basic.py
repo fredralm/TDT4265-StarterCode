@@ -154,7 +154,7 @@ class BasicModel(torch.nn.Module):
                 out_channels= self.output_channels[5],
                 kernel_size=3,
                 stride=1,
-                padding=1
+                padding=0
             )
         )
         # Output resolution 1x1
