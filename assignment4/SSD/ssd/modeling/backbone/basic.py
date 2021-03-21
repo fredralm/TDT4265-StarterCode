@@ -37,7 +37,7 @@ class BasicModel(torch.nn.Module):
             nn.BatchNorm2d(num_features = 128),
             nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 256,
+                in_channels= 128,
                 out_channels= 256,
                 kernel_size=3,
                 stride=1,
