@@ -23,11 +23,11 @@ class BasicModel(torch.nn.Module):
 
         self.feature_extractor0 = nn.Sequential(
             nn.Conv2d(
-                in_channels=image_channels,
+                in_channels= image_channels,
                 out_channels= 128,
-                kernel_size=5,
+                kernel_size=3,
                 stride=1,
-                padding=2
+                padding=1
             ),
             nn.MaxPool2d(
                 kernel_size=2,
@@ -38,7 +38,7 @@ class BasicModel(torch.nn.Module):
             nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 128,
-                out_channels= 256,
+                out_channels= 128,
                 kernel_size=3,
                 stride=1,
                 padding=1
@@ -48,10 +48,10 @@ class BasicModel(torch.nn.Module):
                 stride=2
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 256),
+            nn.BatchNorm2d(num_features = 128),
             nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 256,
+                in_channels= 128,
                 out_channels= 256,
                 kernel_size=3,
                 stride=1,
