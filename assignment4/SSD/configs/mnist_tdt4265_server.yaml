@@ -3,7 +3,7 @@ MODEL:
     BACKBONE:
         NAME: 'basic'
         PRETRAINED: False
-        OUT_CHANNELS: [512, 1024, 512, 512, 256, 256]
+        OUT_CHANNELS: [256, 512, 256, 256, 128, 128]
         INPUT_CHANNELS: 3
 INPUT:
     IMAGE_SIZE: [600, 600]
