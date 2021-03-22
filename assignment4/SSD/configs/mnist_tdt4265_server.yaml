@@ -1,6 +1,6 @@
 MODEL:
     NUM_CLASSES: 11
-    THRESHOLD: 0.7
+    THRESHOLD: 0.5
     BACKBONE:
         NAME: 'improved'
         PRETRAINED: False
