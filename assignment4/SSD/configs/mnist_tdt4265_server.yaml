@@ -1,6 +1,6 @@
 MODEL:
     NUM_CLASSES: 11
-    THRESHOLD: 0.6
+    THRESHOLD: 0.7
     BACKBONE:
         NAME: 'improved'
         PRETRAINED: False
@@ -13,8 +13,8 @@ MODEL:
         BOXES_PER_LOCATION: [4, 6, 6, 6, 4, 4]
 INPUT:
     IMAGE_SIZE: [300, 300]
-    PIXEL_MEAN: [0.485,0.456,0.406]
-    PIXEL_STD: [0.229,0.224,0.225]
+    PIXEL_MEAN: [123.675, 116.280, 103.530]
+    PIXEL_STD: [1, 1, 1]
 DATASETS:
     TRAIN: ("mnist_detection_train", "mnist_detection_val")
     TEST: ("mnist_detection_val", )
@@ -22,6 +22,6 @@ SOLVER:
     MAX_ITER: 15000
     GAMMA: 0.1
     BATCH_SIZE: 16
-    LR: 1e-3
+    LR: 2e-3
 OUTPUT_DIR: 'outputs/basic'
 DATASET_DIR: "/work/datasets"
