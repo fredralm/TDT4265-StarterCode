@@ -10,7 +10,7 @@ MODEL:
         MIN_SIZES: [[20, 20], [60, 60], [111, 111], [162, 162], [213, 213], [264, 264]]
         MAX_SIZES: [[60, 60], [111, 111], [162, 162], [213, 213], [264, 264], [315, 315]]
         ASPECT_RATIOS: [[2], [2, 3], [2, 3], [2, 3], [2], [2]]
-        BOXES_PER_LOCATION: [6, 6, 6, 6, 4, 4]
+        BOXES_PER_LOCATION: [4, 6, 6, 6, 4, 4]
 INPUT:
     IMAGE_SIZE: [300, 300]
     PIXEL_MEAN: [123.675, 116.280, 103.530]
@@ -23,5 +23,5 @@ SOLVER:
     GAMMA: 0.1
     BATCH_SIZE: 16
     LR: 2e-3
-OUTPUT_DIR: 'outputs/basic'
+OUTPUT_DIR: 'outputs/improved'
 DATASET_DIR: "/work/datasets"
