@@ -22,6 +22,6 @@ SOLVER:
     MAX_ITER: 15000
     GAMMA: 0.1
     BATCH_SIZE: 16
-    LR: 1e-3
+    LR: 5e-4
 OUTPUT_DIR: 'outputs/improved'
 DATASET_DIR: "/work/datasets"
