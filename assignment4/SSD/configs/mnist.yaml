@@ -2,7 +2,7 @@ MODEL:
     NUM_CLASSES: 11
     THRESHOLD: 0.5
     BACKBONE:
-        NAME: 'basic'
+        NAME: 'improved'
         PRETRAINED: False
         OUT_CHANNELS: [512, 1024, 512, 512, 256, 256]
         INPUT_CHANNELS: 3
