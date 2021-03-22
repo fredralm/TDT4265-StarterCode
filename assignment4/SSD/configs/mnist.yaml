@@ -3,7 +3,7 @@ MODEL:
     THRESHOLD: 0.5
     BACKBONE:
         NAME: 'improved'
-        PRETRAINED: False
+        PRETRAINED: True
         OUT_CHANNELS: [512, 1024, 512, 512, 256, 256]
         INPUT_CHANNELS: 3
     PRIORS:
