@@ -15,5 +15,5 @@ SOLVER:
     GAMMA: 0.1
     BATCH_SIZE: 16
     LR: 2e-3
-OUTPUT_DIR: 'outputs/improved'
+OUTPUT_DIR: 'outputs/basic'
 DATASET_DIR: "/work/datasets"
