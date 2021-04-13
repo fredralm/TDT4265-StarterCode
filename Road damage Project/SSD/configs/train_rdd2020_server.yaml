@@ -1,0 +1,19 @@
+MODEL:
+    NUM_CLASSES: 5
+    BACKBONE:
+        NAME: 'ResNet152'
+        PRETRAINED: True
+        OUT_CHANNELS: [512, 1024, 2048, 1024, 512, 512]
+        INPUT_CHANNELS: 3
+INPUT:
+    IMAGE_SIZE: [300, 300]
+DATASETS:
+    TRAIN: ("rdd2020_train",)
+    TEST: ("rdd2020_val", )
+SOLVER:
+    MAX_ITER: 120000
+    GAMMA: 0.1
+    BATCH_SIZE: 16
+    LR: 1e-3
+OUTPUT_DIR: 'outputs/rdd2020'
+DATASET_DIR: "/work/datasets"

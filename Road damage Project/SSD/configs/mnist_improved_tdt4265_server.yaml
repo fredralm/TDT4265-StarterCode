@@ -1,0 +1,27 @@
+MODEL:
+    NUM_CLASSES: 11
+    THRESHOLD: 0.7
+    BACKBONE:
+        NAME: 'improved'
+        PRETRAINED: False
+        OUT_CHANNELS: [512, 1024, 512, 512, 256, 256]
+        INPUT_CHANNELS: 3
+    PRIORS:
+        MIN_SIZES: [[10, 10], [60, 60], [111, 111], [162, 162], [213, 213], [264, 264]]
+        MAX_SIZES: [[60, 60], [111, 111], [162, 162], [213, 213], [264, 264], [315, 315]]
+        ASPECT_RATIOS: [[2], [2, 3], [2, 3], [2, 3], [2], [2]]
+        BOXES_PER_LOCATION: [4, 6, 6, 6, 4, 4]
+INPUT:
+    IMAGE_SIZE: [300, 300]
+    PIXEL_MEAN: [123.675, 116.280, 103.530]
+    PIXEL_STD: [1, 1, 1]
+DATASETS:
+    TRAIN: ("mnist_detection_train", "mnist_detection_val")
+    TEST: ("mnist_detection_val", )
+SOLVER:
+    MAX_ITER: 15000
+    GAMMA: 0.1
+    BATCH_SIZE: 16
+    LR: 5e-4
+OUTPUT_DIR: 'outputs/improved90'
+DATASET_DIR: "/work/datasets"
