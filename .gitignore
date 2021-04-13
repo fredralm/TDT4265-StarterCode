@@ -1,5 +1,5 @@
 **/__pycache__/**
 **/datasets/**
-!**Project/SSD/ssd/data/datasets/**
+!**ssd/data/datasets/**
 **/log**
 **/logs/**
