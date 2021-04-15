@@ -26,7 +26,7 @@ class ImprovedModel(torch.nn.Module):
                 out_channels= 128,
                 kernel_size=3,
                 stride=1,
-                padding=1
+                padding=2
             ),
             nn.MaxPool2d(
                 kernel_size=2,
