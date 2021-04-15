@@ -26,7 +26,7 @@ class ImprovedModel(torch.nn.Module):
                 out_channels= 128,
                 kernel_size=3,
                 stride=1,
-                padding=2
+                padding=1
             ),
             nn.MaxPool2d(
                 kernel_size=2,
@@ -63,12 +63,8 @@ class ImprovedModel(torch.nn.Module):
                 in_channels= 256,
                 out_channels= self.output_channels[0],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 38x38
@@ -90,12 +86,8 @@ class ImprovedModel(torch.nn.Module):
                 in_channels= 512,
                 out_channels= self.output_channels[1],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 19x19
@@ -117,12 +109,8 @@ class ImprovedModel(torch.nn.Module):
                 in_channels= 1024,
                 out_channels= self.output_channels[2],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 9x9
@@ -144,12 +132,8 @@ class ImprovedModel(torch.nn.Module):
                 in_channels= 512,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 5x5
@@ -171,12 +155,8 @@ class ImprovedModel(torch.nn.Module):
                 in_channels= 512,
                 out_channels= self.output_channels[4],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 3x3

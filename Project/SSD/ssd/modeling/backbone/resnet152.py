@@ -26,12 +26,8 @@ class ResNet152(torch.nn.Module):
                 in_channels= 1024,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 5x5
@@ -53,12 +49,8 @@ class ResNet152(torch.nn.Module):
                 in_channels= 1024,
                 out_channels= self.output_channels[4],
                 kernel_size=3,
-                stride=1,
+                stride=2,
                 padding=1
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
             )
         )
         # Output resolution 3x3
