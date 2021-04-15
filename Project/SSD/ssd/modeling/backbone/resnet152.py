@@ -14,16 +14,16 @@ class ResNet152(torch.nn.Module):
         self.feature_extractor3 = nn.Sequential(
             nn.Conv2d(
                 in_channels= self.output_channels[2],
-                out_channels= 1024,
+                out_channels= 2048,
                 kernel_size=3,
                 stride=1,
                 padding=1
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 1024),
+            nn.BatchNorm2d(num_features = 2048),
             #nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 1024,
+                in_channels= 2048,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
                 stride=2,

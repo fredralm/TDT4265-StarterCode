@@ -1,9 +1,9 @@
 MODEL:
     NUM_CLASSES: 5
     BACKBONE:
-        NAME: 'resnet18'
+        NAME: 'resnet152'
         PRETRAINED: True
-        OUT_CHANNELS: [128, 256, 512, 1024, 512, 512]
+        OUT_CHANNELS: [512, 1024, 2048, 1024, 1024, 512]
         INPUT_CHANNELS: 3
 INPUT:
     IMAGE_SIZE: [300, 300]
@@ -17,5 +17,5 @@ SOLVER:
     LR: 1e-3
 OUTPUT_DIR: 'outputs/rdd2020'
 DATASET_DIR: "/work/datasets"
-EVAL_STEP: 2500 # Evaluate dataset every eval_step, disabled when eval_step < 0
-MODEL_SAVE_STEP: 2500 # Save checkpoint every save_step
+EVAL_STEP: 2000 # Evaluate dataset every eval_step, disabled when eval_step < 0
+MODEL_SAVE_STEP: 2000 # Save checkpoint every save_step
