@@ -34,7 +34,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 128),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 128,
                 out_channels= 256,
@@ -48,7 +48,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 256),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 256,
                 out_channels= 256,
@@ -58,7 +58,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 256),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 256,
                 out_channels= self.output_channels[0],
@@ -71,7 +71,7 @@ class ImprovedModel(torch.nn.Module):
         self.feature_extractor1 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[0]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[0],
                 out_channels= 512,
@@ -81,7 +81,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 512),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 512,
                 out_channels= self.output_channels[1],
@@ -94,7 +94,7 @@ class ImprovedModel(torch.nn.Module):
         self.feature_extractor2 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[1]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[1],
                 out_channels= 1024,
@@ -104,7 +104,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 1024),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 1024,
                 out_channels= self.output_channels[2],
@@ -117,7 +117,7 @@ class ImprovedModel(torch.nn.Module):
         self.feature_extractor3 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[2]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[2],
                 out_channels= 512,
@@ -127,7 +127,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 512),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 512,
                 out_channels= self.output_channels[3],
@@ -140,7 +140,7 @@ class ImprovedModel(torch.nn.Module):
         self.feature_extractor4 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[3]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[3],
                 out_channels= 512,
@@ -150,7 +150,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 512),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 512,
                 out_channels= self.output_channels[4],
@@ -163,7 +163,7 @@ class ImprovedModel(torch.nn.Module):
         self.feature_extractor5 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[4]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[4],
                 out_channels= 512,
@@ -173,7 +173,7 @@ class ImprovedModel(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 512),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 512,
                 out_channels= self.output_channels[5],
