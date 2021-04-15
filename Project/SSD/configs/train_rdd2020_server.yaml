@@ -1,7 +1,7 @@
 MODEL:
     NUM_CLASSES: 5
     BACKBONE:
-        NAME: 'improved'
+        NAME: 'resnet18'
         PRETRAINED: True
         OUT_CHANNELS: [512, 1024, 512, 512, 256, 256]
         INPUT_CHANNELS: 3

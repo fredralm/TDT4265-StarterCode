@@ -3,6 +3,7 @@ from ssd.modeling.backbone.vgg import VGG
 from ssd.modeling.backbone.basic import BasicModel
 from ssd.modeling.backbone.improved import ImprovedModel
 from ssd.modeling.backbone.resnet152 import ResNet152
+from ssd.modeling.backbone.resnet18 import ResNet152
 from ssd.modeling.box_head.box_head import SSDBoxHead
 from ssd.utils.model_zoo import load_state_dict_from_url
 from ssd import torch_utils
@@ -44,6 +45,9 @@ def build_backbone(cfg):
             state_dict = load_state_dict_from_url(
                 "https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth")
             model.init_from_pretrain(state_dict)
-    if backbone_name == "ResNet152":
+    if backbone_name == "resnet152":
         model = ResNet152(cfg)
+        return model
+    if backbone_name == "resnet18":
+        model = ResNet18(cfg)
         return model
