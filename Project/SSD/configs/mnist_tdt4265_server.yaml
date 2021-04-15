@@ -1,5 +1,5 @@
 MODEL:
-    NUM_CLASSES: 11
+    NUM_CLASSES: 5
     BACKBONE:
         NAME: 'improved'
         PRETRAINED: False
@@ -8,8 +8,8 @@ MODEL:
 INPUT:
     IMAGE_SIZE: [300, 300]
 DATASETS:
-    TRAIN: ("mnist_detection_train", "mnist_detection_val")
-    TEST: ("mnist_detection_val", )
+    TRAIN: ("rdd2020_train",)
+    TEST: ("rdd2020_val", )
 SOLVER:
     MAX_ITER: 10000
     GAMMA: 0.1

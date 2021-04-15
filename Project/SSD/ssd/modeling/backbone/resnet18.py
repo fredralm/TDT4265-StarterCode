@@ -2,28 +2,28 @@ import torchvision
 import torch
 from torch import nn
 
-class ResNet152(torch.nn.Module):
+class ResNet18(torch.nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.output_channels = cfg.MODEL.BACKBONE.OUT_CHANNELS
         self.output_feature_shape = cfg.MODEL.PRIORS.FEATURE_MAPS
-        self.base_model = torchvision.models.resnet152(pretrained=True)
+        self.base_model = torchvision.models.resnet18(pretrained=True)
         for param in self.base_model.parameters():
             param.requires_grad = False
         # Output resolution 10x10
         self.feature_extractor3 = nn.Sequential(
             nn.Conv2d(
                 in_channels= self.output_channels[2],
-                out_channels= 1024,
+                out_channels= 512,
                 kernel_size=3,
                 stride=1,
                 padding=1
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 1024),
+            nn.BatchNorm2d(num_features = 512),
             nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 1024,
+                in_channels= 512,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
                 stride=1,
