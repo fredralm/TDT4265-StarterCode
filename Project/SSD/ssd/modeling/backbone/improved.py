@@ -199,17 +199,11 @@ class ImprovedModel(torch.nn.Module):
         """
         out_features = []
         out_features.append(self.feature_extractor0(x))
-        print(out_features[0].shape)
         out_features.append(self.feature_extractor1(out_features[-1]))
-        print(out_features[1].shape)
         out_features.append(self.feature_extractor2(out_features[-1]))
-        print(out_features[2].shape)
         out_features.append(self.feature_extractor3(out_features[-1]))
-        print(out_features[3].shape)
         out_features.append(self.feature_extractor4(out_features[-1]))
-        print(out_features[4].shape)
         out_features.append(self.feature_extractor5(out_features[-1]))
-        print(out_features[5].shape)
 
         for idx, feature in enumerate(out_features):
             w, h = self.output_feature_shape[idx]
