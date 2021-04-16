@@ -134,7 +134,6 @@ class ResNet18(torch.nn.Module):
         out_features.append(x)
         x = self.feature_extractor5(x)
         out_features.append(x)
-        print(x.shape)
 
         for idx, feature in enumerate(out_features):
             w, h = self.output_feature_shape[idx]
