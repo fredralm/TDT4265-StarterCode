@@ -10,7 +10,7 @@ class ResNet18(torch.nn.Module):
         self.base_model = torchvision.models.resnet18(pretrained=True)
         for param in self.base_model.parameters():
             param.requires_grad = False
-            
+
         # Output resolution 19x19
         self.feature_extractor2 = nn.Sequential(
             nn.Conv2d(
@@ -109,8 +109,8 @@ class ResNet18(torch.nn.Module):
             shape(-1, output_channels[1], 19, 19),
             shape(-1, output_channels[2], 10, 10),
             shape(-1, output_channels[3], 5, 5),
-            shape(-1, output_channels[3], 3, 3),
-            shape(-1, output_channels[4], 1, 1)]
+            shape(-1, output_channels[4], 3, 3),
+            shape(-1, output_channels[5], 1, 1)]
         We have added assertion tests to check this, iteration through out_features,
         where out_features[0] should have the shape:
             shape(-1, output_channels[0], 38, 38),
@@ -122,20 +122,16 @@ class ResNet18(torch.nn.Module):
         x = self.base_model.maxpool(x)
         x = self.base_model.layer1(x)
         x = self.base_model.layer2(x)
-        #out_features.append(x)
-        #print(x.shape)
         x = self.base_model.layer3(x)
         out_features.append(x)
-        print(x.shape)
         x = self.base_model.layer4(x)
         out_features.append(x)
-        print(x.shape)
+        x = self.feature_extractor2(x)
+        out_features.append(x)
         x = self.feature_extractor3(x)
         out_features.append(x)
-        print(x.shape)
         x = self.feature_extractor4(x)
         out_features.append(x)
-        print(x.shape)
         x = self.feature_extractor5(x)
         out_features.append(x)
         print(x.shape)

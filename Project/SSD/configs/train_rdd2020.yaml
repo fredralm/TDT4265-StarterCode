@@ -1,15 +1,12 @@
 MODEL:
-    NUM_CLASSES: 4
+    NUM_CLASSES: 5
     BACKBONE:
         NAME: 'resnet18'
         PRETRAINED: True
-        #OUT_CHANNELS: [512, 1024, 2048, 1024, 1024, 512] # resnet152
         OUT_CHANNELS: [256, 512, 1024, 1024, 512, 512] # resnet18
-        #OUT_CHANNELS: [512, 1024, 512, 512, 256, 256] # model from assignment 4
         INPUT_CHANNELS: 3
     PRIORS:
         FEATURE_MAPS: [[38, 38], [19, 19], [10, 10], [5, 5], [3, 3], [1, 1]]
-        #FEATURE_MAPS: [[75, 75], [38, 38], [19, 19], [10, 10], [5, 5], [3, 3]]
 INPUT:
     IMAGE_SIZE: [600, 600]
 DATASETS:

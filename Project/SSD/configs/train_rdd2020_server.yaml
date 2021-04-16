@@ -1,14 +1,14 @@
 MODEL:
-    NUM_CLASSES: 4
+    NUM_CLASSES: 5
     BACKBONE:
-        NAME: 'resnet152'
+        NAME: 'resnet18'
         PRETRAINED: True
-        OUT_CHANNELS: [512, 1024, 2048, 1024, 1024, 512] # resnet152
-        #OUT_CHANNELS: [128, 256, 512, 512, 256, 256] # resnet18
+        #OUT_CHANNELS: [512, 1024, 2048, 1024, 1024, 512] # resnet152
+        OUT_CHANNELS: [256, 512, 1024, 1024, 512, 512] # resnet18
         #OUT_CHANNELS: [512, 1024, 512, 512, 256, 256] # model from assignment 4
         INPUT_CHANNELS: 3
 INPUT:
-    IMAGE_SIZE: [300, 300]
+    IMAGE_SIZE: [600, 600]
 DATASETS:
     TRAIN: ("rdd2020_train",)
     TEST: ("rdd2020_val", )
