@@ -15,16 +15,16 @@ class ResNet18(torch.nn.Module):
         self.feature_extractor2 = nn.Sequential(
             nn.Conv2d(
                 in_channels= self.output_channels[1],
-                out_channels= 512,
+                out_channels= 256,
                 kernel_size=3,
                 stride=1,
                 padding=1
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 512),
+            nn.BatchNorm2d(num_features = 256),
             nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 512,
+                in_channels= 256,
                 out_channels= self.output_channels[2],
                 kernel_size=3,
                 stride=2,
@@ -38,16 +38,16 @@ class ResNet18(torch.nn.Module):
             nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[2],
-                out_channels= 1024,
+                out_channels= 512,
                 kernel_size=3,
                 stride=1,
                 padding=1
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 1024),
+            nn.BatchNorm2d(num_features = 512),
             nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 1024,
+                in_channels= 512,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
                 stride=2,
@@ -122,11 +122,10 @@ class ResNet18(torch.nn.Module):
         x = self.base_model.maxpool(x)
         x = self.base_model.layer1(x)
         x = self.base_model.layer2(x)
+        out_features.append(x)
         x = self.base_model.layer3(x)
         out_features.append(x)
         x = self.base_model.layer4(x)
-        out_features.append(x)
-        x = self.feature_extractor2(x)
         out_features.append(x)
         x = self.feature_extractor3(x)
         out_features.append(x)
