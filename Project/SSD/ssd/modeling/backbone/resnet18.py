@@ -10,10 +10,11 @@ class ResNet18(torch.nn.Module):
         self.base_model = torchvision.models.resnet18(pretrained=True)
         for param in self.base_model.parameters():
             param.requires_grad = False
-        # Output resolution 10x10
-        self.feature_extractor3 = nn.Sequential(
+            
+        # Output resolution 19x19
+        self.feature_extractor2 = nn.Sequential(
             nn.Conv2d(
-                in_channels= self.output_channels[2],
+                in_channels= self.output_channels[1],
                 out_channels= 512,
                 kernel_size=3,
                 stride=1,
@@ -24,6 +25,29 @@ class ResNet18(torch.nn.Module):
             nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 512,
+                out_channels= self.output_channels[2],
+                kernel_size=3,
+                stride=2,
+                padding=1
+            )
+        )
+        # Output resolution 10x10
+        self.feature_extractor3 = nn.Sequential(
+            nn.ReLU(),
+            nn.BatchNorm2d(num_features = self.output_channels[2]),
+            nn.Dropout(p = 0.1),
+            nn.Conv2d(
+                in_channels= self.output_channels[2],
+                out_channels= 1024,
+                kernel_size=3,
+                stride=1,
+                padding=1
+            ),
+            nn.ReLU(),
+            nn.BatchNorm2d(num_features = 1024),
+            nn.Dropout(p = 0.1),
+            nn.Conv2d(
+                in_channels= 1024,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
                 stride=2,
@@ -98,17 +122,23 @@ class ResNet18(torch.nn.Module):
         x = self.base_model.maxpool(x)
         x = self.base_model.layer1(x)
         x = self.base_model.layer2(x)
-        out_features.append(x)
+        #out_features.append(x)
+        #print(x.shape)
         x = self.base_model.layer3(x)
         out_features.append(x)
+        print(x.shape)
         x = self.base_model.layer4(x)
         out_features.append(x)
+        print(x.shape)
         x = self.feature_extractor3(x)
         out_features.append(x)
+        print(x.shape)
         x = self.feature_extractor4(x)
         out_features.append(x)
+        print(x.shape)
         x = self.feature_extractor5(x)
         out_features.append(x)
+        print(x.shape)
 
         for idx, feature in enumerate(out_features):
             w, h = self.output_feature_shape[idx]
