@@ -10,8 +10,8 @@ def build_transforms(cfg, is_train=True):
             ToPercentCoords(),
             Resize(cfg.INPUT.IMAGE_SIZE),
             SubtractMeans(cfg.INPUT.PIXEL_MEAN, cfg.INPUT.PIXEL_STD),
-            RandomSampleCrop(),
-            RandomMirror(),
+            #RandomSampleCrop(),
+            #RandomMirror(),
             ToTensor(),
         ]
     else:
@@ -22,7 +22,7 @@ def build_transforms(cfg, is_train=True):
         ]
     transform = Compose(transform)
     return transform
-    
+
 
 def build_target_transform(cfg):
     transform = SSDTargetTransform(PriorBox(cfg)(),
