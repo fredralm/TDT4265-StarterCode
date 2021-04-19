@@ -113,7 +113,7 @@ class ImprovedModel(torch.nn.Module):
                 padding=1
             )
         )
-        # Output resolution 9x9
+        # Output resolution 10x10
         self.feature_extractor3 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[2]),
