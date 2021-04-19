@@ -3,7 +3,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data.dataloader import default_collate
 from ssd.data import samplers
 from ssd.data.datasets import build_dataset
-from ssd.data.transforms import build_transforms, build_target_transform, build_augmentations
+from ssd.data.transforms import build_transforms, build_target_transform
 from ssd.container import Container
 
 
