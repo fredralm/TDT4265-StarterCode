@@ -20,7 +20,7 @@ SOLVER:
     MAX_ITER: 120000
     GAMMA: 0.1
     BATCH_SIZE: 16
-    LR: 1e-3
+    LR: 1e-4
 OUTPUT_DIR: 'outputs/rdd2020'
 DATASET_DIR: "/work/datasets"
 EVAL_STEP: 5000 # Evaluate dataset every eval_step, disabled when eval_step < 0
