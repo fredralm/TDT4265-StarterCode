@@ -9,7 +9,8 @@ MODEL:
         INPUT_CHANNELS: 3
     PRIORS:
         #FEATURE_MAPS: [[38, 38], [19, 19], [10, 10], [5, 5], [3, 3], [1, 1]]
-        FEATURE_MAPS: [[75, 75], [38, 38], [19, 19], [10, 10], [5, 5], [3, 3]]
+        #FEATURE_MAPS: [[75, 75], [38, 38], [19, 19], [10, 10], [5, 5], [3, 3]]
+        FEATURE_MAPS: [[75, 75], [38, 38], [19, 19], [9, 9], [4, 4], [2, 2]] #maxpool instead of conv stride=2
 INPUT:
     IMAGE_SIZE: [600, 600]
 DATASETS:
@@ -22,5 +23,5 @@ SOLVER:
     LR: 1e-3
 OUTPUT_DIR: 'outputs/rdd2020'
 DATASET_DIR: "/work/datasets"
-EVAL_STEP: 2000 # Evaluate dataset every eval_step, disabled when eval_step < 0
-MODEL_SAVE_STEP: 2000 # Save checkpoint every save_step
+EVAL_STEP: 5000 # Evaluate dataset every eval_step, disabled when eval_step < 0
+MODEL_SAVE_STEP: 1000 # Save checkpoint every save_step

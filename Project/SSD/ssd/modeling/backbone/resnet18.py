@@ -27,9 +27,14 @@ class ResNet18(torch.nn.Module):
                 in_channels= 256,
                 out_channels= self.output_channels[2],
                 kernel_size=3,
-                stride=2,
-                padding=1
+                stride=1,
+                padding=2
+            ),
+            nn.MaxPool2d(
+                kernel_size=2,
+                stride=2
             )
+
         )
         # Output resolution 10x10
         self.feature_extractor3 = nn.Sequential(
@@ -50,8 +55,12 @@ class ResNet18(torch.nn.Module):
                 in_channels= 512,
                 out_channels= self.output_channels[3],
                 kernel_size=3,
-                stride=2,
+                stride=1,
                 padding=1
+            ),
+            nn.MaxPool2d(
+                kernel_size=2,
+                stride=2
             )
         )
         # Output resolution 5x5
@@ -73,8 +82,12 @@ class ResNet18(torch.nn.Module):
                 in_channels= 1024,
                 out_channels= self.output_channels[4],
                 kernel_size=3,
-                stride=2,
+                stride=1,
                 padding=1
+            ),
+            nn.MaxPool2d(
+                kernel_size=2,
+                stride=2
             )
         )
         # Output resolution 3x3

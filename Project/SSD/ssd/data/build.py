@@ -3,7 +3,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data.dataloader import default_collate
 from ssd.data import samplers
 from ssd.data.datasets import build_dataset
-from ssd.data.transforms import build_transforms, build_target_transform
+from ssd.data.transforms import build_transforms, build_target_transform, build_augmentations
 from ssd.container import Container
 
 
@@ -34,6 +34,7 @@ def make_data_loader(cfg, is_train=True, max_iter=None, start_iter=0):
         cfg.DATASET_DIR,
         dataset_list, transform=train_transform,
         target_transform=target_transform, is_train=is_train)
+
 
     shuffle = is_train
 
