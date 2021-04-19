@@ -11,32 +11,7 @@ class ResNet18(torch.nn.Module):
         for param in self.base_model.parameters():
             param.requires_grad = False
 
-        # Output resolution 19x19
-        self.feature_extractor2 = nn.Sequential(
-            nn.Conv2d(
-                in_channels= self.output_channels[1],
-                out_channels= 256,
-                kernel_size=3,
-                stride=1,
-                padding=1
-            ),
-            nn.ReLU(),
-            nn.BatchNorm2d(num_features = 256),
-            nn.Dropout(p = 0.1),
-            nn.Conv2d(
-                in_channels= 256,
-                out_channels= self.output_channels[2],
-                kernel_size=3,
-                stride=1,
-                padding=2
-            ),
-            nn.MaxPool2d(
-                kernel_size=2,
-                stride=2
-            )
-
-        )
-        # Output resolution 10x10
+        # Output resolution 15x9
         self.feature_extractor3 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[2]),
@@ -56,14 +31,14 @@ class ResNet18(torch.nn.Module):
                 out_channels= self.output_channels[3],
                 kernel_size=3,
                 stride=1,
-                padding=1
+                padding=2
             ),
             nn.MaxPool2d(
                 kernel_size=2,
                 stride=2
             )
         )
-        # Output resolution 5x5
+        # Output resolution 8x5
         self.feature_extractor4 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[3]),
@@ -83,14 +58,14 @@ class ResNet18(torch.nn.Module):
                 out_channels= self.output_channels[4],
                 kernel_size=3,
                 stride=1,
-                padding=1
+                padding=2
             ),
             nn.MaxPool2d(
                 kernel_size=2,
                 stride=2
             )
         )
-        # Output resolution 3x3
+        # Output resolution 4x2
         self.feature_extractor5 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[4]),
@@ -113,7 +88,7 @@ class ResNet18(torch.nn.Module):
                 padding=0
             )
         )
-        # Output resolution 1x1
+        # Output resolution 2x1
 
     def forward(self, x):
         """
