@@ -26,6 +26,7 @@ class TDT4265Dataset(torch.utils.data.Dataset):
         else:
             self.split = split
             self.labels = self.read_labels(data_dir.parent.joinpath("labels.json"))
+            self.image_ids.sort(key=lambda x: int(x))
             self.image_ids = self.split_dataset(split)
             self.image_ids = self.filter_image_ids()
             if split == "train":
@@ -139,4 +140,3 @@ class TDT4265Dataset(torch.utils.data.Dataset):
     def get_img_info(self, index):
         image_id = self.image_ids[index]
         return self.image_info[image_id]
-
