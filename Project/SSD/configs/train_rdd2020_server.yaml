@@ -37,8 +37,8 @@ INPUT:
     IMAGE_SIZE: [460, 260]
 
 DATASETS:
-    TRAIN: ("tdt4265\_train",)
-    TEST: ("tdt4265\_val", )
+    TRAIN: ("tdt4265_train",)
+    TEST: ("tdt4265_val", )
 SOLVER:
     MAX_ITER: 120000
     GAMMA: 0.1
