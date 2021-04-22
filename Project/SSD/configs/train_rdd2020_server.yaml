@@ -25,26 +25,28 @@ MODEL:
         #MIN_SIZES: [[60, 60], [120, 120], [222, 222], [324, 324], [426, 426], [528, 528]]
         #MAX_SIZES: [[120, 120], [222, 222], [324, 324], [426, 426], [528, 528], [630, 630]]
 
-        # Image size [460, 260]
-        FEATURE_MAPS: [[58, 33], [29, 17], [15, 9], [8, 5], [4, 3], [2, 1]]
-        STRIDES: [[8, 8], [16, 16], [31, 29], [58, 52], [115, 87], [230, 260]]
-        MIN_SIZES: [[46, 26], [92, 52], [170, 96], [248, 140], [327, 185], [405, 229]]
-        MAX_SIZES: [[92, 52], [170, 96], [248, 140], [327, 185], [405, 229], [483, 273]]
+        # Image size [260, 460]
+        FEATURE_MAPS: [[33, 58], [17, 29], [9, 15], [5, 8], [3, 4], [1, 2]]
+        STRIDES: [[8, 8], [16, 16], [29, 31], [52, 58], [87, 115], [260, 230]]
+        MIN_SIZES: [[26, 46], [52, 92], [96, 170], [140, 248], [185, 327], [229, 405]]
+        MAX_SIZES: [[52, 92], [96, 170], [140, 248], [185, 327], [229, 405], [273, 483]]
+
+        # TEST 300x500 or similar
 
 INPUT:
     #IMAGE_SIZE: [300, 300]
     #IMAGE_SIZE: [600, 600]
-    IMAGE_SIZE: [460, 260]
+    IMAGE_SIZE: [260, 460]
 
 DATASETS:
-    TRAIN: ("tdt4265_train",)
-    TEST: ("tdt4265_val", )
+    TRAIN: ("rdd2020_train",)
+    TEST: ("rdd2020_val", )
 SOLVER:
     MAX_ITER: 120000
     GAMMA: 0.1
     BATCH_SIZE: 16
     LR: 5e-4
 OUTPUT_DIR: 'outputs/rdd2020'
-DATASET_DIR: "datasets"
-EVAL_STEP: 2500 # Evaluate dataset every eval_step, disabled when eval_step < 0
-MODEL_SAVE_STEP: 2500 # Save checkpoint every save_step
+DATASET_DIR: "/work/datasets"
+EVAL_STEP: 5000 # Evaluate dataset every eval_step, disabled when eval_step < 0
+MODEL_SAVE_STEP: 5000 # Save checkpoint every save_step

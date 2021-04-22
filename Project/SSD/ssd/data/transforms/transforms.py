@@ -3,6 +3,8 @@ import torch
 import cv2
 import numpy as np
 from numpy import random
+import imgaug
+from imgaug import augmenters
 
 
 def intersect(box_a, box_b):
@@ -271,4 +273,13 @@ class RandomMirror(object):
             image = image[:, ::-1]
             boxes = boxes.copy()
             boxes[:, 0::2] = width - boxes[:, 2::-2]
+        return image, boxes, classes
+
+class ImgaugAug(object):
+    def __call__(self, image, boxes, classes):
+        aug = augmenters.Sequential([
+            augmenters.Sharpen(alpha=(0.0, 0.25), lightness=(0.75, 1.5)),
+            augmenters.Multiply((0.75, 1.25))
+        ])
+        image = aug(images = image)
         return image, boxes, classes
