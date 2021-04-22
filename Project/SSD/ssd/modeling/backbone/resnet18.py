@@ -42,16 +42,16 @@ class ResNet18(torch.nn.Module):
             #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[3],
-                out_channels= 1024,
+                out_channels= 512,
                 kernel_size=3,
                 stride=1,
                 padding=1
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 1024),
+            nn.BatchNorm2d(num_features = 512),
             #nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 1024,
+                in_channels= 512,
                 out_channels= self.output_channels[4],
                 kernel_size=3,
                 stride=2,
@@ -65,16 +65,16 @@ class ResNet18(torch.nn.Module):
             #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[4],
-                out_channels= 512,
+                out_channels= 256,
                 kernel_size=3,
                 stride=1,
                 padding=1
             ),
             nn.ReLU(),
-            nn.BatchNorm2d(num_features = 512),
+            nn.BatchNorm2d(num_features = 256),
             #nn.Dropout(p = 0.1),
             nn.Conv2d(
-                in_channels= 512,
+                in_channels= 256,
                 out_channels= self.output_channels[5],
                 kernel_size=3,
                 stride=1,
