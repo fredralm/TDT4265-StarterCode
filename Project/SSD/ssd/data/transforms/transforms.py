@@ -281,5 +281,5 @@ class ImgaugAug(object):
             augmenters.Sharpen(alpha=(0.0, 0.25), lightness=(0.75, 1.5)),
             augmenters.Multiply((0.75, 1.25))
         ])
-        image = aug(images = image)
+        image = aug(image = image)
         return image, boxes, classes
