@@ -9,7 +9,9 @@ class ResNet18(torch.nn.Module):
         self.output_feature_shape = cfg.MODEL.PRIORS.FEATURE_MAPS
         self.base_model = torchvision.models.resnet18(pretrained=True)
         #for i, param in enumerate(self.base_model.parameters()):
-            #param.requires_grad = False
+        #    param.requires_grad = False
+        #    if i == 20:
+        #        break
 
 
         # Output resolution 15x9
