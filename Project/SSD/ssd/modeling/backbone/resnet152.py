@@ -8,8 +8,11 @@ class ResNet152(torch.nn.Module):
         self.output_channels = cfg.MODEL.BACKBONE.OUT_CHANNELS
         self.output_feature_shape = cfg.MODEL.PRIORS.FEATURE_MAPS
         self.base_model = torchvision.models.resnet152(pretrained=True)
-        for param in self.base_model.parameters():
+        for i, param in enumerate(self.base_model.parameters()):
             param.requires_grad = False
+            if i >= 33:
+                break
+
         # Output resolution 10x10
         self.feature_extractor3 = nn.Sequential(
             nn.Conv2d(
