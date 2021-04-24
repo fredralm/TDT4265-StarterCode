@@ -10,7 +10,7 @@ class ResNet18(torch.nn.Module):
         self.base_model = torchvision.models.resnet18(pretrained=True)
         #for i, param in enumerate(self.base_model.parameters()):
         #    param.requires_grad = False
-        #    if i == 20:
+        #    if i >= 15:
         #        break
 
 
