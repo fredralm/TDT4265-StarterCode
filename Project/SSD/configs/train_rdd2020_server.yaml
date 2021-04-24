@@ -1,10 +1,10 @@
 MODEL:
     NUM_CLASSES: 5
     BACKBONE:
-        NAME: 'resnet152'
+        NAME: 'resnet18'
         PRETRAINED: True
-        OUT_CHANNELS: [512, 1024, 2048, 1024, 1024, 512] # resnet152
-        #OUT_CHANNELS: [128, 256, 512, 1024, 512, 512] # resnet18
+        #OUT_CHANNELS: [512, 1024, 2048, 1024, 1024, 512] # resnet152
+        OUT_CHANNELS: [128, 256, 512, 1024, 512, 512] # resnet18
         #OUT_CHANNELS: [512, 1024, 512, 512, 256, 256] # model from assignment 4
         INPUT_CHANNELS: 3
     PRIORS:
@@ -51,14 +51,14 @@ INPUT:
     #IMAGE_SIZE: [338, 600]
 
 DATASETS:
-    TRAIN: ("rdd2020_train",)
-    TEST: ("rdd2020_val", )
+    TRAIN: ("tdt4265_train",)
+    TEST: ("tdt4265_val", )
 SOLVER:
     MAX_ITER: 120000
     GAMMA: 0.1
     BATCH_SIZE: 16
     LR: 5e-4
 OUTPUT_DIR: 'outputs/rdd2020'
-DATASET_DIR: "/work/datasets"
-EVAL_STEP: 5000 # Evaluate dataset every eval_step, disabled when eval_step < 0
-MODEL_SAVE_STEP: 5000 # Save checkpoint every save_step
+DATASET_DIR: "datasets"
+EVAL_STEP: 2500 # Evaluate dataset every eval_step, disabled when eval_step < 0
+MODEL_SAVE_STEP: 2500 # Save checkpoint every save_step
