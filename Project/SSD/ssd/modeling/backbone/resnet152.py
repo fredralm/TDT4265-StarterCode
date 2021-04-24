@@ -8,8 +8,11 @@ class ResNet152(torch.nn.Module):
         self.output_channels = cfg.MODEL.BACKBONE.OUT_CHANNELS
         self.output_feature_shape = cfg.MODEL.PRIORS.FEATURE_MAPS
         self.base_model = torchvision.models.resnet152(pretrained=True)
-        for param in self.base_model.parameters():
+        for i, param in enumerate(self.base_model.parameters()):
             param.requires_grad = False
+            if i >= 33:
+                break
+
         # Output resolution 10x10
         self.feature_extractor3 = nn.Sequential(
             nn.Conv2d(
@@ -21,7 +24,7 @@ class ResNet152(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 2048),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 2048,
                 out_channels= self.output_channels[3],
@@ -34,7 +37,7 @@ class ResNet152(torch.nn.Module):
         self.feature_extractor4 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[3]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[3],
                 out_channels= 1024,
@@ -44,7 +47,7 @@ class ResNet152(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 1024),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 1024,
                 out_channels= self.output_channels[4],
@@ -57,7 +60,7 @@ class ResNet152(torch.nn.Module):
         self.feature_extractor5 = nn.Sequential(
             nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[4]),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= self.output_channels[4],
                 out_channels= 512,
@@ -67,7 +70,7 @@ class ResNet152(torch.nn.Module):
             ),
             nn.ReLU(),
             nn.BatchNorm2d(num_features = 512),
-            nn.Dropout(p = 0.1),
+            #nn.Dropout(p = 0.1),
             nn.Conv2d(
                 in_channels= 512,
                 out_channels= self.output_channels[5],
