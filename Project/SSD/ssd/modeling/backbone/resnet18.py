@@ -7,7 +7,7 @@ class ResNet18(torch.nn.Module):
         super().__init__()
         self.output_channels = cfg.MODEL.BACKBONE.OUT_CHANNELS
         self.output_feature_shape = cfg.MODEL.PRIORS.FEATURE_MAPS
-        self.base_model = torchvision.models.resnet18(pretrained=True)
+        self.base_model = torchvision.models.resnet34(pretrained=True)
         #for i, param in enumerate(self.base_model.parameters()):
         #    param.requires_grad = False
         #    if i >= 15:
