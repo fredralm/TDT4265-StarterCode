@@ -59,6 +59,6 @@ SOLVER:
     BATCH_SIZE: 16
     LR: 5e-4
 OUTPUT_DIR: 'outputs/rdd2020'
-DATASET_DIR: "work/datasets"
+DATASET_DIR: "datasets"
 EVAL_STEP: 5000 # Evaluate dataset every eval_step, disabled when eval_step < 0
 MODEL_SAVE_STEP: 5000 # Save checkpoint every save_step
