@@ -15,6 +15,7 @@ class ResNet152(torch.nn.Module):
 
         # Output resolution 10x10
         self.feature_extractor3 = nn.Sequential(
+            nn.BatchNorm2d(num_features = 2048),
             nn.Conv2d(
                 in_channels= self.output_channels[2],
                 out_channels= 2048,
