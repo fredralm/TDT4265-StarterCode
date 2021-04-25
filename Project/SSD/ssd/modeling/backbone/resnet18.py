@@ -16,7 +16,7 @@ class ResNet18(torch.nn.Module):
 
         # Output resolution 15x9
         self.feature_extractor3 = nn.Sequential(
-            #nn.ReLU(),
+            nn.ReLU(),
             nn.BatchNorm2d(num_features = self.output_channels[2]),
             #nn.Dropout(p = 0.1),
             nn.Conv2d(
